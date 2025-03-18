@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,104 +9,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-<link rel="stylesheet" href="footer.css">
-
-    <style>
-        .navbar-brand {
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: 'Old English Text MT', serif;
-        }
-        .offcanvas .nav-link {
-            color: black !important;
-        }
-        .top-bar {
-            background: #0A2647;
-            color: white;
-            padding: 5px 20px;
-            font-size: 14px;
-        }
-        .nav-container {
-            background: #0066FF;
-        }
-        @media (max-width: 768px) {
-            .top-bar {
-                display: none;
-            }
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
 
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-        .main-news {
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
-        .news-item {
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .news-item img {
-            width: 120px;
-            height: 90px;
-            margin-right: 15px;
-            border-radius: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .news-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            .news-item img {
-                width: 100%;
-                height: auto;
-                margin-bottom: 10px;
-            }
-        }
-    </style>
 </head>
+
 <body>
-<!-- Top bar (masquée sur petits écrans) -->
-<div class="top-bar d-none d-lg-flex justify-content-between w-100">
-    <div class="d-flex justify-content-center w-100">
-        <a href="#" class="text-white text-decoration-none mx-3">Annonces</a> |
-        <a href="#" class="text-white text-decoration-none mx-3">Contactez-nous</a> |
-        <a href="#" class="text-white text-decoration-none mx-3">À propos</a> |
-        <a href="#" class="text-white text-decoration-none mx-3">FocusMedia</a>
+    <!-- Top bar (masquée sur petits écrans) -->
+    <div class="top-bar d-none d-lg-flex justify-content-between w-100">
+        <div class="d-flex justify-content-center w-100">
+            <a href="#" class="text-white text-decoration-none mx-3">Annonces</a> |
+            <a href="#" class="text-white text-decoration-none mx-3">Contactez-nous</a> |
+            <a href="#" class="text-white text-decoration-none mx-3">À propos</a> |
+            <a href="#" class="text-white text-decoration-none mx-3">FocusMedia</a>
+        </div>
+        <div id="date-time" class="text-white pe-3"></div>
     </div>
-    <div id="date-time" class="text-white pe-3"></div>
-</div>
 
     <!-- Navbar principale -->
     <nav class="navbar navbar-dark nav-container">
         <div class="container-fluid">
             <!-- Bouton hamburger (uniquement sur petits écrans) -->
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <!-- Logo -->
             <a class="navbar-brand mx-auto" href="#">Focus Média</a>
-            
+
             <!-- Icône de compte -->
             <a href="#" class="text-white">
                 <i class="bi bi-person-circle"></i>
@@ -115,20 +49,21 @@
         <!-- Liens du menu (affichés seulement sur grands écrans) -->
         <div class="container-fluid d-none d-lg-flex justify-content-center">
             <ul class="nav">
-               
+
                 <li class="nav-item"><a class="nav-link text-white" href="#">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#">Annonces</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#">Culture</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#">Économie</a></li>
-                
+
                 <li class="nav-item"><a class="nav-link text-white" href="#">Internationale</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="#">National</a></li>
             </ul>
         </div>
     </nav>
-    
+
     <!-- Offcanvas menu (affiché sur petits écrans) -->
-    <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="offcanvasMenu"
+        aria-labelledby="offcanvasMenuLabel">
         <div class="offcanvas-header">
             <a class="navbar-brand mx-auto" href="#">Focus Média</a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -143,13 +78,13 @@
                     </form>
                     <div id="searchResults" class="mt-3"></div>
                 </div>
-                
+
                 <!-- Liens de navigation -->
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Annonces</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Culture</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Économie</a></li>
-                
+
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Internationale</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">National</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">Contactez-nous</a></li>
@@ -162,52 +97,70 @@
     <div class="container">
         <div class="news-grid">
             <div class="main-news">
-                <h2>Accueil</h2>
-                <img src="image.jpg" alt="news">
-                <p><strong>Dernière grande actualité :</strong> Un événement majeur vient de se produire...</p>
-                <h2>Culture</h2>
-                <img src="image1.jpg" alt="news">
-                <p><strong>Dernière grande actualité :</strong> Un événement majeur vient de se produire...</p>
-                <h2>Economie</h2>
-                <img src="image2.jpg" alt="news">
-                <p><strong>Dernière grande actualité :</strong> Un événement majeur vient de se produire...</p>
-                <h2>National</h2>
-                <img src="image3.jpg" alt="news">
-                <p><strong>Dernière grande actualité :</strong> Un événement majeur vient de se produire...</p>
+                <!-- La section "Accueil" sera remplie dynamiquement -->
+                <div class="section" id="accueil">
+                    <h2>Accueil</h2> <!-- Titre de l'article affiché ici -->
+                    <img src="images/image.jpg" alt="news">
+                    <div class="blog-posts"></div> <!-- Les articles seront injectés ici -->
+                </div>
+    
+                <!-- La section "Culture" sera remplie dynamiquement -->
+                <div class="section" id="culture">
+                    <h2>Culture</h2> <!-- Titre de l'article affiché ici -->
+                    <img src="images/image1.jpg" alt="news">
+                    <div class="blog-posts"></div> <!-- Les articles seront injectés ici -->
+                </div>
+    
+                <!-- Autres sections -->
+                <div class="section" id="economy">
+                    <h2>Economie</h2>
+                    <img src="images/image2.jpg" alt="news">
+                    <div class="blog-posts"></div>
+                </div>
+    
+                <div class="section" id="national">
+                    <h2>National</h2>
+                    <img src="images/image3.jpg" alt="news">
+                    <div class="blog-posts"></div>
+                </div>
             </div>
-       
-        
+    
             <div class="sidebar">
                 <h3>Dernières nouvelles</h3>
                 <div class="news-item">
-                    <img src="image5.jpg" alt="news">
-                    <p><strong>Titre de l'article</strong><br>Brève description de l'article...</p>
+                    <img src="images/image5.jpg" alt="news">
+                    <div class="blog-posts"></div>
                 </div>
-                
+    
                 <div class="news-item">
-                    <img src="image4.jpg" alt="news">
-                    <p><strong>Titre de l'article</strong><br>Brève description de l'article...</p>
-                </div>
-                <div class="news-item">
-                    <img src="image3.jpg" alt="news">
-                    <p><strong>Titre de l'article</strong><br>Brève description de l'article...</p>
+                    <img src="images/image4.jpg" alt="news">
+                    <div class="blog-posts"></div>
                 </div>
                 <div class="news-item">
-                    <img src="image2.jpg" alt="news">
-                    <p><strong>Titre de l'article</strong><br>Brève description de l'article...</p>
+                    <img src="images/image3.jpg" alt="news">
+                    <div class="blog-posts"></div>
+                </div>
+                <div class="news-item">
+                    <img src="images/image2.jpg" alt="news">
+                    <div class="blog-posts"></div>
                 </div>
             </div>
         </div>
     </div>
+    
+    
+
+
     <footer class="bg-dark text-white pt-4">
         <div class="container">
             <div class="row text-center">
                 <!-- Colonne 1 : À propos -->
                 <div class="col-md-4">
                     <h5>À propos</h5>
-                    <p>Nous vous apportons les dernières nouvelles du monde entier avec précision et professionnalisme.</p>
+                    <p>Nous vous apportons les dernières nouvelles du monde entier avec précision et professionnalisme.
+                    </p>
                 </div>
-    
+
                 <!-- Colonne 2 : Newsletter -->
                 <div class="col-md-4">
                     <h5>Newsletter</h5>
@@ -217,7 +170,7 @@
                         <button class="btn btn-primary">S'abonner</button>
                     </form>
                 </div>
-    
+
                 <!-- Colonne 3 : Réseaux sociaux -->
                 <div class="col-md-4">
                     <h5>Suivez-nous</h5>
@@ -229,16 +182,18 @@
                     </div>
                 </div>
             </div>
-    
+
             <!-- Ligne de séparation -->
             <hr class="my-4 border-light">
-    
+
             <!-- Copyright -->
             <div class="text-center pb-3">
                 &copy; <span id="current-year"></span> Focus Média | Tous droits réservés.
             </div>
         </div>
     </footer>
-<script src="scriptDate.js"></script>
+    <script src="js/scriptDate.js"></script>
+    <script src="js/rss.js"></script>
 </body>
+
 </html>

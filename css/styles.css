@@ -1,0 +1,101 @@
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Old English Text MT', serif;
+}
+.offcanvas .nav-link {
+    color: black !important;
+}
+.top-bar {
+    background: #0A2647;
+    color: white;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+.nav-container {
+    background: #0066FF;
+}
+@media (max-width: 768px) {
+    .top-bar {
+        display: none;
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* La colonne principale est 2x plus grande */
+    gap: 20px;
+}
+
+.main-news {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-news img {
+    width: 100%;
+    max-width: 1200px;
+    max-height: 500px; /* Ajuste cette valeur selon tes besoins */
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+
+.sidebar {
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Styles normaux pour les articles du sidebar */
+.news-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-item img {
+    width: 100px;
+    height: 75px;
+    border-radius: 5px;
+}
+
+/* 📱 Responsive Design : Sidebar reste côte à côte même sur petit écran */
+@media (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr; /* La sidebar passe en dessous */
+    }
+
+    .news-item {
+        display: flex;  /* Garde les éléments en ligne */
+        flex-direction: row; /* Texte et image restent côte à côte */
+        text-align: left;
+    }
+
+    .news-item img {
+        width: 80px;
+        height: 60px;
+        margin-right: 10px;
+    }
+}
