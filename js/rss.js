@@ -1,48 +1,77 @@
 async function fetchRSS() {
-    const rssFeed = "https://elconquistadorbaoulyn.blogspot.com/feeds/posts/default?alt=rss"; // Flux RSS de ton blog
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
-    const data = await response.json();
+    try {
+        const rssFeed = "https://lefocusmedia.blogspot.com/feeds/posts/default?alt=json";
+        const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssFeed);
 
-    // Articles à insérer
-    const articles = data.items;
+        const response = await fetch(proxyUrl, { cache: "no-store" });
 
-    // Pour chaque section, afficher un article
-    // "Accueil" - la première section
-    const accueilSection = document.querySelector('#accueil');
-    accueilSection.querySelector('h2').innerText = articles[0].title; // Mettre le titre de l'article ici
-    accueilSection.querySelector('.blog-posts').innerHTML = `
-        <a href="${articles[0].link}" target="_blank">
-            <p>${articles[0].description}</p>
-        </a>
-    `;
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
 
-    // "Culture" - la deuxième section
-    const cultureSection = document.querySelector('#culture');
-    cultureSection.querySelector('h2').innerText = articles[1].title; // Mettre le titre de l'article ici
-    cultureSection.querySelector('.blog-posts').innerHTML = `
-        <a href="${articles[1].link}" target="_blank">
-            <p>${articles[1].description}</p>
-        </a>
-    `;
+        const rawData = await response.json();
+        const data = JSON.parse(rawData.contents);
 
-    // "Economie" - la troisième section
-    const economySection = document.querySelector('#economy');
-    economySection.querySelector('h2').innerText = articles[2].title; // Mettre le titre de l'article ici
-    economySection.querySelector('.blog-posts').innerHTML = `
-        <a href="${articles[2].link}" target="_blank">
-            <p>${articles[2].description}</p>
-        </a>
-    `;
+        if (!data.feed.entry || data.feed.entry.length === 0) {
+            console.warn("Aucun article trouvé !");
+            return;
+        }
 
-    // "National" - la quatrième section
-    const nationalSection = document.querySelector('#national');
-    nationalSection.querySelector('h2').innerText = articles[3].title; // Mettre le titre de l'article ici
-    nationalSection.querySelector('.blog-posts').innerHTML = `
-        <a href="${articles[3].link}" target="_blank">
-            <p>${articles[3].description}</p>
-        </a>
-    `;
+        const articles = data.feed.entry;
+        let latestNewsContent = ''; // Stocke les articles sans catégorie pour la sidebar
+
+        articles.forEach(article => {
+            const title = article.title.$t;
+            const link = article.link.find(l => l.rel === "alternate").href;
+
+            // 📷 Récupérer l'image
+            let imageUrl = "images/logo.jpg"; // Image par défaut
+            if (article.media$thumbnail) {
+                imageUrl = article.media$thumbnail.url;
+            } else if (article.content && article.content.$t.match(/<img.*?src="(.*?)"/)) {
+                imageUrl = article.content.$t.match(/<img.*?src="(.*?)"/)[1];
+            }
+
+            // 🏷 Récupérer les catégories (libellés)
+            const categories = article.category ? article.category.map(cat => cat.term) : [];
+
+            let addedToCategory = false; // Vérifier si l'article a été placé
+
+            categories.forEach(category => {
+                const section = document.querySelector(`[data-category="${category}"]`);
+                if (section) {
+                    section.querySelector(".blog-posts").innerHTML += `
+                        <div class="news-item">
+                            <img src="${imageUrl}" alt="Image de ${title}">
+                            <a href="${link}" target="_blank">
+                                <h4>${title}</h4>
+                            </a>
+                        </div>
+                    `;
+                    addedToCategory = true;
+                }
+            });
+
+            // Si l'article n'a pas de catégorie correspondante, l'ajouter à la sidebar
+            if (!addedToCategory) {
+                latestNewsContent += `
+                    <div class="news-item">
+                        <img src="${imageUrl}" alt="Image de ${title}">
+                        <a href="${link}" target="_blank">
+                            <h4>${title}</h4>
+                        </a>
+                    </div>
+                `;
+            }
+        });
+
+        // 🎯 Afficher les articles sans catégorie dans la sidebar
+        document.querySelector("#latest-news").innerHTML = latestNewsContent;
+
+    } catch (error) {
+        console.error("Erreur lors du chargement du flux RSS :", error);
+    }
 }
 
-// Appeler la fonction pour récupérer et afficher les articles
+// Charger les articles
 fetchRSS();
