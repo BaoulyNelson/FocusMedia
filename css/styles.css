@@ -1,8 +1,9 @@
 .navbar-brand {
     font-size: 2rem;
     font-weight: bold;
-    font-family: 'Old English Text MT', serif;
+    font-family: 'UnifrakturMaguntia', serif;
 }
+
 .offcanvas .nav-link {
     color: black !important;
 }
