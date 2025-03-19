@@ -4,7 +4,6 @@ async function fetchRSS() {
         const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssFeed);
 
         const response = await fetch(proxyUrl, { cache: "no-store" });
-
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
@@ -18,13 +17,13 @@ async function fetchRSS() {
         }
 
         const articles = data.feed.entry;
-        let latestNewsContent = ''; // Stocke les articles sans catégorie pour la sidebar
+        let latestNewsContent = ''; // Articles sans catégorie spécifique
 
         articles.forEach(article => {
             const title = article.title.$t;
             const link = article.link.find(l => l.rel === "alternate").href;
 
-            // 📷 Récupérer l'image
+            // Récupérer l'image dynamique de l'article
             let imageUrl = "images/logo.jpg"; // Image par défaut
             if (article.media$thumbnail) {
                 imageUrl = article.media$thumbnail.url;
@@ -32,40 +31,58 @@ async function fetchRSS() {
                 imageUrl = article.content.$t.match(/<img.*?src="(.*?)"/)[1];
             }
 
-            // 🏷 Récupérer les catégories (libellés)
+            // Récupérer l'auteur
+            const author = article.author ? article.author[0].name.$t : "Auteur inconnu";
+
+            // Récupérer les catégories (libellés)
             const categories = article.category ? article.category.map(cat => cat.term) : [];
 
-            let addedToCategory = false; // Vérifier si l'article a été placé
+            let addedToCategory = false;
 
             categories.forEach(category => {
                 const section = document.querySelector(`[data-category="${category}"]`);
                 if (section) {
+                    // Mettre à jour l'image de la section de manière dynamique
+                    const sectionImage = section.querySelector('img');
+                    // On vérifie si l'image n'a pas déjà été mise à jour pour éviter de la changer plusieurs fois
+                    if (sectionImage && sectionImage.getAttribute('data-dynamic') !== 'true') {
+                        sectionImage.setAttribute('src', imageUrl);
+                        sectionImage.setAttribute('data-dynamic', 'true'); // Marque pour ne pas recharger
+                    }
+                    
+                    // Ajouter l'article à la section correspondante
                     section.querySelector(".blog-posts").innerHTML += `
-                        <div class="news-item">
+                    <div class="blog-post">                
                             <img src="${imageUrl}" alt="Image de ${title}">
-                            <a href="${link}" target="_blank">
-                                <h4>${title}</h4>
-                            </a>
+                            <div>
+                                <a href="${link}" target="_blank">
+                                    <h4>${title}</h4>
+                                </a>
+                                <p class="author">Par : ${author}</p>
+                            </div>
                         </div>
                     `;
                     addedToCategory = true;
                 }
             });
 
-            // Si l'article n'a pas de catégorie correspondante, l'ajouter à la sidebar
+            // Si l'article ne correspond à aucune catégorie de section, l'ajouter à la sidebar
             if (!addedToCategory) {
                 latestNewsContent += `
                     <div class="news-item">
                         <img src="${imageUrl}" alt="Image de ${title}">
-                        <a href="${link}" target="_blank">
-                            <h4>${title}</h4>
-                        </a>
+                        <div>
+                            <a href="${link}" target="_blank">
+                                <h4>${title}</h4>
+                            </a>
+                            <p class="author">Par : ${author}</p>
+                        </div>
                     </div>
                 `;
             }
         });
 
-        // 🎯 Afficher les articles sans catégorie dans la sidebar
+        // Afficher les articles sans catégorie dans la sidebar
         document.querySelector("#latest-news").innerHTML = latestNewsContent;
 
     } catch (error) {

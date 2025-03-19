@@ -43,13 +43,13 @@
 
 .main-news img {
     width: 100%;
-    max-width: 1200px;
-    max-height: 500px; /* Ajuste cette valeur selon tes besoins */
-    height: auto;
+    height: 100%;
+    max-height: 500px; /* Ajuste selon tes besoins */
+    object-fit: cover; /* Permet à l'image de remplir le conteneur sans déformation */
     display: block;
-    margin: 10px 0;
     border-radius: 5px;
 }
+
 
 
 .sidebar {
@@ -98,4 +98,45 @@
         height: 60px;
         margin-right: 10px;
     }
+}
+.author {
+    font-size: 14px; /* Taille du texte */
+    font-weight: bold; /* Met en gras */
+    font-style: italic; /* Italique */
+    color: #0A2647; /* Couleur harmonisée avec le top-bar */
+    margin-top: 5px; /* Espacement entre le titre et l’auteur */
+    display: block; /* Forcer l'affichage sous forme de bloc */
+    text-align: left; /* Alignement du texte */
+}
+
+
+.blog-post {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Assure l'image au-dessus du texte */
+    align-items: center;
+    text-align: center;
+}
+
+.blog-post img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.blog-post h4 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0 10px;
+}
+
+.blog-post p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
 }
