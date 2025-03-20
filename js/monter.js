@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", function () {
     let btn = document.getElementById("btnScrollTop");
 
@@ -15,5 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    // Mettre à jour l'année automatiquement
+    document.getElementById("current-year").textContent = new Date().getFullYear();
 });
-</script>
