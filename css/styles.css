@@ -8,19 +8,19 @@
     color: black !important;
 }
 .top-bar {
-    background: #0A2647;
+    background-color: #102f4e;
     color: white;
+    display: flex;
+    justify-content: center; /* Centrer sur les grands écrans par défaut */
+    align-items: center;
     padding: 5px 20px;
-    font-size: 14px;
+    overflow-x: hidden;
 }
+
 .nav-container {
     background: #0066FF;
 }
-@media (max-width: 768px) {
-    .top-bar {
-        display: none;
-    }
-}
+
 
 .container {
     max-width: 1200px;
@@ -158,3 +158,13 @@
     height: 800px;
     max-width: 100%;
 }
+
+.date-time {
+    margin-left: auto; /* Pousse .date-time à l'extrémité droite */
+    color: yellow;
+    position: absolute; /* Permet de positionner l'élément à un endroit spécifique */
+    right: 0; /* Positionne l'élément à droite */
+    font-size: 12px;
+  
+}
+
