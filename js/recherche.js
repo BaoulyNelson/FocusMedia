@@ -1,37 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
     const searchForm = document.getElementById("searchForm");
-    const searchInput = searchForm.querySelector("input");
+    const searchInput = document.getElementById("searchInput");
     const searchResults = document.getElementById("searchResults");
+    const sections = document.querySelectorAll(".section"); // Toutes les sections avec class="section"
 
-    searchForm.addEventListener("submit", async function (event) {
+    searchForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Empêche le rechargement de la page
 
         const query = searchInput.value.trim().toLowerCase();
         if (query === "") return;
 
-        // Récupération du flux RSS
-        const rssFeed = "https://lefocusmedia.blogspot.com/feeds/posts/default?alt=rss";
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssFeed}`);
-        const data = await response.json();
+        // Vérifie si l'utilisateur entre un ID de section (ex: #culture)
+        if (query.startsWith("#")) {
+            const targetSection = document.querySelector(query);
 
-        const articles = data.items;
+            if (targetSection) {
+                sections.forEach(section => section.style.display = "none"); // Masquer toutes les sections
+                targetSection.style.display = "block"; // Afficher la bonne section
 
-        // Filtrer les articles par mot-clé dans le titre ou la description
-        const filteredArticles = articles.filter(article =>
-            article.title.toLowerCase().includes(query) ||
-            article.description.toLowerCase().includes(query)
-        );
+                history.pushState(null, "", query); // Modifier l’URL sans recharger la page
+                window.scrollTo({ top: targetSection.offsetTop - 80, behavior: "smooth" });
+            }
+        } else {
+            // RECHERCHE PAR MOT-CLÉ DANS LES SECTIONS
+            let found = false;
 
-        // Afficher les résultats de recherche
-        searchResults.innerHTML = filteredArticles.length > 0
-            ? filteredArticles.map(article => `
-                <div class="search-item">
-                    <a href="${article.link}" target="_blank">
-                        <h4>${article.title}</h4>
-                    </a>
-                    <p>${article.description.substring(0, 100)}...</p>
-                </div>
-            `).join("")
-            : "<p>Aucun résultat trouvé.</p>";
+            sections.forEach(section => {
+                const text = section.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    section.style.display = "block"; // Afficher la section contenant le mot-clé
+                    found = true;
+                } else {
+                    section.style.display = "none"; // Masquer les autres sections
+                }
+            });
+
+            // Affiche un message si aucun résultat trouvé
+            searchResults.innerHTML = found ? "" : `<p class="text-danger">Aucun résultat trouvé pour "${query}".</p>`;
+        }
     });
 });

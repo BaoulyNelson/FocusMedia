@@ -23,6 +23,13 @@ async function fetchRSS() {
             const title = article.title.$t;
             const link = article.link.find(l => l.rel === "alternate").href;
 
+            // Récupérer la date de publication et la formater
+            const publishedDate = new Date(article.published.$t).toLocaleDateString("fr-FR", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            });
+
             // Récupérer l'image dynamique de l'article
             let imageUrl = "images/logo.jpg"; // Image par défaut
             if (article.media$thumbnail) {
@@ -44,23 +51,23 @@ async function fetchRSS() {
                 if (section) {
                     // Mettre à jour l'image de la section de manière dynamique
                     const sectionImage = section.querySelector('img');
-                    // On vérifie si l'image n'a pas déjà été mise à jour pour éviter de la changer plusieurs fois
                     if (sectionImage && sectionImage.getAttribute('data-dynamic') !== 'true') {
                         sectionImage.setAttribute('src', imageUrl);
-                        sectionImage.setAttribute('data-dynamic', 'true'); // Marque pour ne pas recharger
+                        sectionImage.setAttribute('data-dynamic', 'true');
                     }
                     
                     // Ajouter l'article à la section correspondante
                     section.querySelector(".blog-posts").innerHTML += `
                     <div class="blog-post">                
-                            <img src="${imageUrl}" alt="Image de ${title}">
-                            <div>
-                                <a href="${link}" target="_blank">
-                                    <h4>${title}</h4>
-                                </a>
-                                <p class="author">Par : ${author}</p>
-                            </div>
+                        <img src="${imageUrl}" alt="Image de ${title}">
+                        <div>
+                            <a href="${link}" target="_blank">
+                                <h4>${title}</h4>
+                            </a>
+                            <p class="author">Par : ${author}</p>
+                            <p class="date">Publié le : ${publishedDate}</p>
                         </div>
+                    </div>
                     `;
                     addedToCategory = true;
                 }
@@ -69,15 +76,16 @@ async function fetchRSS() {
             // Si l'article ne correspond à aucune catégorie de section, l'ajouter à la sidebar
             if (!addedToCategory) {
                 latestNewsContent += `
-                    <div class="news-item">
-                        <img src="${imageUrl}" alt="Image de ${title}">
-                        <div>
-                            <a href="${link}" target="_blank">
-                                <h4>${title}</h4>
-                            </a>
-                            <p class="author">Par : ${author}</p>
-                        </div>
+                <div class="news-item">
+                    <img src="${imageUrl}" alt="Image de ${title}">
+                    <div>
+                        <a href="${link}" target="_blank">
+                            <h4>${title}</h4>
+                        </a>
+                        <p class="author">Par : ${author}</p>
+                        <p class="date">Publié le : ${publishedDate}</p>
                     </div>
+                </div>
                 `;
             }
         });
