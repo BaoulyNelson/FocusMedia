@@ -2,223 +2,213 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Focus Média</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Média</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/footer.css">
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-    <!-- Top bar (masquée sur petits écrans) -->
-    <div class="top-bar d-none d-lg-flex justify-content-between w-100">
-        <div class="d-flex justify-content-center w-100">
-            <a href="#annonces" class="text-white text-decoration-none mx-3">Annonces</a> |
-            <a href="#contact" class="text-white text-decoration-none mx-3">Contactez-nous</a> |
-            <a href="#apropos" class="text-white text-decoration-none mx-3">À propos</a> |
-            <a href="#focusmedia" class="text-white text-decoration-none mx-3">FocusMedia</a>
-        </div>
-        <div class="date-time" id="date-time"></div>
+  <!-- Top bar (masquée sur petits écrans) -->
+  <div class="top-bar d-none d-lg-flex justify-content-between w-100">
+    <div class="d-flex justify-content-center w-100">
+      <a href="#annonces" class="text-white text-decoration-none mx-3">Annonces</a> |
+      <a href="#contact" class="text-white text-decoration-none mx-3">Contactez-nous</a> |
+      <a href="#apropos" class="text-white text-decoration-none mx-3">À propos</a> |
+      <a href="#focusmedia" class="text-white text-decoration-none mx-3">FocusMedia</a>
+    </div>
+    <div class="date-time" id="date-time"></div>
+
+  </div>
+
+  <!-- Navbar principale -->
+  <nav class="navbar navbar-dark nav-container">
+    <div class="container-fluid">
+      <!-- Bouton hamburger (uniquement sur petits écrans) -->
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Logo -->
+      <a class="navbar-brand mx-auto" href="accueil">Focus Média</a>
+
+      <!-- Icône de compte -->
+      <a href="mailto:jonelmarc53@gmail.com" class="text-white" target="_blank">
+        <i class="bi bi-person-circle"></i>
+      </a>
 
     </div>
 
-    <!-- Navbar principale -->
-    <nav class="navbar navbar-dark nav-container">
-        <div class="container-fluid">
-            <!-- Bouton hamburger (uniquement sur petits écrans) -->
-            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- Liens du menu (affichés seulement sur grands écrans) -->
+    <div class="container-fluid d-none d-lg-flex justify-content-center">
+      <ul class="nav">
 
-            <!-- Logo -->
-            <a class="navbar-brand mx-auto" href="accueil">Focus Média</a>
+        <li class="nav-item"><a class="nav-link text-white" href="#accueil">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#annonces">Annonces</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#culture">Culture</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#economie">Economie</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#international">International</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#national">National</a></li>
 
-            <!-- Icône de compte -->
-            <a href="mailto:jonelmarc53@gmail.com" class="text-white" target="_blank">
-                <i class="bi bi-person-circle"></i>
-            </a>
-            
-        </div>
-
-        <!-- Liens du menu (affichés seulement sur grands écrans) -->
-        <div class="container-fluid d-none d-lg-flex justify-content-center">
-            <ul class="nav">
-
-                <li class="nav-item"><a class="nav-link text-white" href="#accueil">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#annonces">Annonces</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#culture">Culture</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#economie">Economie</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#international">International</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="#national">National</a></li>
-
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Offcanvas menu (affiché sur petits écrans) -->
-    <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="offcanvasMenu"
-        aria-labelledby="offcanvasMenuLabel">
-        <div class="offcanvas-header">
-            <a class="navbar-brand mx-auto" href="#focusmedia">Focus Média</a>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav flex-column">
-                <!-- Barre de recherche -->
-                <div class="container mt-3">
-                    <form id="searchForm" class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
-                        <button class="btn btn-primary" type="submit">Rechercher</button>
-                    </form>
-                    <div id="searchResults" class="mt-3"></div>
-                </div>
-
-                <li class="nav-item"><a class="nav-link text-dark" href="#accueil">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#annonces">Annonces</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#culture">Culture</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#economie">Economie</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#international">International</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#national">National</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contactez-nous</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#apropos">À propos</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="#focusmedia">FocusMédia</a></li>
-
-            </ul>
-        </div>
+      </ul>
     </div>
+  </nav>
 
+  <!-- Offcanvas menu (affiché sur petits écrans) -->
+  <div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+      <a class="navbar-brand mx-auto" href="#focusmedia">Focus Média</a>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <!-- Barre de recherche -->
+        <div class="container mt-3">
+          <form id="searchForm" class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+            <button class="btn btn-primary" type="submit">Rechercher</button>
+          </form>
+          <div id="searchResults" class="mt-3"></div>
+        </div>
+
+        <li class="nav-item"><a class="nav-link text-dark" href="#accueil">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#annonces">Annonces</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#culture">Culture</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#economie">Economie</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#international">International</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#national">National</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#contact">Contactez-nous</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#apropos">À propos</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#focusmedia">FocusMédia</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="news-grid">
+      <div class="main-news">
+        <div class="section" id="accueil" data-category="Accueil">
+          <h2 class="text-center">Accueil</h2>
+
+          <div class="blog-posts">
+            <p>Bienvenue sur Focus Media, votre source d'informations et d'analyses sur les tendances numériques, l'innovation technologique et les évolutions des médias. Nous nous engageons à fournir un contenu de qualité qui vous aide à comprendre les enjeux actuels et à anticiper les changements du monde numérique. Explorez nos articles et restez à jour avec les dernières actualités qui façonnent notre société moderne.</p>
+          </div>
+        </div>
+
+        <div class="section" id="annonces" data-category="Annonces">
+          <h2 class="text-center">Annonces</h2>
+          <div class="blog-posts"></div>
+        </div>
+
+        <div class="section" id="contact" data-category="Contact">
+          <div class="iframe-container">
+            <iframe src="https://forms.gle/DWTYEpYf64BMbsRN6" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+          </div>
+        </div>
+
+        <div class="section" id="apropos" data-category="Apropos">
+          <h2 class="text-center">A Propos</h2>
+          <div class="blog-posts">
+            <p>Focus Media est une plateforme dédiée à l'analyse et à la couverture approfondie des sujets clés dans le monde des médias, des tendances numériques et de l'innovation technologique. Nous nous engageons à offrir à nos lecteurs une perspective claire et pertinente sur les événements actuels, en mettant l'accent sur l'impact des nouvelles technologies et des médias modernes. À travers des articles, des interviews et des analyses, Focus Media cherche à éclairer et à informer, tout en offrant un regard critique sur l'évolution rapide de notre société numérique.</p>
+          </div>
+        </div>
+
+        <div class="section" id="focusmedia" data-category="FocusMedia">
+          <h2 class="text-center">FocusMedia</h2>
+          <div class="blog-posts"></div>
+        </div>
+
+        <div class="section" id="culture" data-category="Culture">
+          <h2 class="text-center">Culture</h2>
+          <div class="blog-posts"></div>
+        </div>
+
+        <div class="section" id="economie" data-category="Economie">
+          <h2 class="text-center">Economie</h2>
+          <div class="blog-posts"></div>
+        </div>
+
+        <div class="section" id="national" data-category="National">
+          <h2 class="text-center">National</h2>
+          <div class="blog-posts"></div>
+        </div>
+
+        <div class="section" id="international" data-category="International">
+          <h2 class="text-center">International</h2>
+          <div class="blog-posts"></div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <h3>Dernières nouvelles</h3>
+        <div id="latest-news" class="latest-news"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white pt-4">
     <div class="container">
-        <div class="news-grid">
-            <div class="main-news">
-                <div class="section" id="accueil" data-category="Accueil">
-                    <h2 class="text-center">Accueil</h2>
-                
-                    <div class="blog-posts">
-                        <p>Bienvenue sur Focus Media, votre source d'informations et d'analyses sur les tendances numériques, l'innovation technologique et les évolutions des médias. Nous nous engageons à fournir un contenu de qualité qui vous aide à comprendre les enjeux actuels et à anticiper les changements du monde numérique. Explorez nos articles et restez à jour avec les dernières actualités qui façonnent notre société moderne.</p>
-                    </div> 
-                </div>
-                
-
-                <div class="section" id="annonces" data-category="Annonces">
-                    <h2 class="text-center">Annonces</h2> 
-                    <div class="blog-posts"></div> 
-                </div>
-
-                <div class="section" id="contact" data-category="Contact">
-                <div class="iframe-container">
-                    <iframe src="https://forms.gle/DWTYEpYf64BMbsRN6" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
-                </div>
-            </div>
-
-                
-                
-                <div class="section" id="apropos" data-category="Apropos">
-                    <h2 class="text-center">A Propos</h2> 
-                    <div class="blog-posts">
-                        <p>Focus Media est une plateforme dédiée à l'analyse et à la couverture approfondie des sujets clés dans le monde des médias, des tendances numériques et de l'innovation technologique. Nous nous engageons à offrir à nos lecteurs une perspective claire et pertinente sur les événements actuels, en mettant l'accent sur l'impact des nouvelles technologies et des médias modernes. À travers des articles, des interviews et des analyses, Focus Media cherche à éclairer et à informer, tout en offrant un regard critique sur l'évolution rapide de notre société numérique.</p>
-                    </div> 
-                </div>
-                
-    
-                <div class="section" id="focusmedia" data-category="FocusMedia">
-                    <h2 class="text-center">FocusMedia</h2> 
-                    <div class="blog-posts"></div> 
-                </div>
-    
-                <div class="section" id="culture" data-category="Culture">
-                    <h2 class="text-center">Culture</h2> 
-                    <div class="blog-posts"></div>
-                </div>
-    
-                <div class="section" id="economie" data-category="Economie">
-                    <h2 class="text-center">Economie</h2>
-                    <div class="blog-posts"></div>
-                </div>
-    
-                <div class="section" id="national" data-category="National">
-                    <h2 class="text-center">National</h2>
-                    <div class="blog-posts"></div>
-                </div>
-
-                <div class="section" id="international" data-category="International">
-                    <h2 class="text-center">International</h2>
-                    <div class="blog-posts"></div>
-                </div>
-            </div>
-    
-            <div class="sidebar">
-                <h3>Dernières nouvelles</h3>
-                <div id="latest-news" class="latest-news"></div>
-            </div>
+      <div class="row text-center">
+        <!-- Colonne 1 : À propos -->
+        <div class="col-md-4">
+          <h5>À propos</h5>
+          <p>Nous vous apportons les dernières nouvelles du monde entier avec précision et professionnalisme.</p>
         </div>
+
+        <!-- Colonne 2 : Newsletter -->
+        <div class="col-md-4">
+          <h5>Newsletter</h5>
+          <p>Inscrivez-vous pour recevoir les dernières mises à jour.</p>
+          <form>
+            <input type="email" class="form-control mb-2" placeholder="Votre email">
+            <button class="btn btn-primary">S'abonner</button>
+          </form>
+        </div>
+
+        <!-- Colonne 3 : Réseaux sociaux -->
+        <div class="col-md-4">
+          <h5>Suivez-nous</h5>
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ligne de séparation -->
+      <hr class="my-4 border-light">
+
+      <!-- Copyright -->
+      <div class="text-center pb-3">
+        &copy; <span id="current-year"></span> Focus Média | Tous droits réservés.
+      </div>
     </div>
-    
+  </footer>
 
+  <!-- Bouton "Retour en haut" -->
+  <button id="btnScrollTop" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px; display: none;">
+    <i class="bi bi-arrow-up"></i> <!-- Icône Bootstrap -->
+  </button>
 
-
-    <footer class="bg-dark text-white pt-4">
-        <div class="container">
-            <div class="row text-center">
-                <!-- Colonne 1 : À propos -->
-                <div class="col-md-4">
-                    <h5>À propos</h5>
-                    <p>Nous vous apportons les dernières nouvelles du monde entier avec précision et professionnalisme.</p>
-                </div>
-    
-                <!-- Colonne 2 : Newsletter -->
-                <div class="col-md-4">
-                    <h5>Newsletter</h5>
-                    <p>Inscrivez-vous pour recevoir les dernières mises à jour.</p>
-                    <form>
-                        <input type="email" class="form-control mb-2" placeholder="Votre email">
-                        <button class="btn btn-primary">S'abonner</button>
-                    </form>
-                </div>
-    
-                <!-- Colonne 3 : Réseaux sociaux -->
-                <div class="col-md-4">
-                    <h5>Suivez-nous</h5>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Ligne de séparation -->
-            <hr class="my-4 border-light">
-    
-            <!-- Copyright -->
-            <div class="text-center pb-3">
-                &copy; <span id="current-year"></span> Focus Média | Tous droits réservés.
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Bouton "Retour en haut" -->
-    <button id="btnScrollTop" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px; display: none;">
-        <i class="bi bi-arrow-up"></i> <!-- Icône Bootstrap -->
-    </button>
-    
-    
-    <script src="js/scriptDate.js"></script>
-    <script src="js/rss.js"></script>
-    <script src="js/panneau.js"></script>
-    <script src="js/recherche.js"></script>
-    <script src="js/monter.js"></script>
+  <script src="js/scriptDate.js"></script>
+  <script src="js/rss.js"></script>
+  <script src="js/panneau.js"></script>
+  <script src="js/recherche.js"></script>
+  <script src="js/monter.js"></script>
+  <script src="js/section.js"></script>
 </body>
 
 </html>
